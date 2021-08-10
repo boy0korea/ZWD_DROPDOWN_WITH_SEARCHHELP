@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_ENHO" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <TOOL>HOOK_IMPL</TOOL>
+   <SHORTTEXT>WD DropDown with SearchHelp</SHORTTEXT>
+   <ORIGINAL_OBJECT>
+    <PGMID>R3TR</PGMID>
+    <ORG_OBJ_TYPE>CLAS</ORG_OBJ_TYPE>
+    <ORG_OBJ_NAME>/1WDA/C5STANDARD</ORG_OBJ_NAME>
+    <ORG_MAIN_TYPE>CLAS</ORG_MAIN_TYPE>
+    <ORG_MAIN_NAME>/1WDA/C5STANDARD</ORG_MAIN_NAME>
+    <PROGRAMNAME>/1WDA/C5STANDARD==============CP</PROGRAMNAME>
+   </ORIGINAL_OBJECT>
+   <ENHANCEMENTS>
+    <ENH_HOOK_IMPL>
+     <PROGRAMNAME>/1WDA/C5STANDARD==============CP</PROGRAMNAME>
+     <ENHMODE>S</ENHMODE>
+     <FULL_NAME>\PR:/1WDA/C5STANDARD==============CP\TY:CL_TOOLBAR_DROPDOWN_BY_KEY\SE:PUBLIC\SE:END\EI</FULL_NAME>
+     <SOURCE>
+      <item>* WD DropDown with SearchHelp</item>
+      <item>    DATA zmo_sh TYPE REF TO /1wda/dtable_cell_editor.</item>
+      <item/>
+     </SOURCE>
+    </ENH_HOOK_IMPL>
+    <ENH_HOOK_IMPL>
+     <PROGRAMNAME>/1WDA/C5STANDARD==============CP</PROGRAMNAME>
+     <ENHMODE>D</ENHMODE>
+     <FULL_NAME>\PR:/1WDA/C5STANDARD==============CP\TY:CL_TOOLBAR_DROPDOWN_BY_KEY\IN:IF_NW7_VIEW_ELEMENT_ADAPTER\ME:SET_CONTENT\SE:BEGIN\EI</FULL_NAME>
+     <SOURCE>
+      <item>*</item>
+      <item>    IF zcl_wd_dd_sh=&gt;gv_on EQ abap_true.</item>
+      <item>      IF zmo_sh IS INITIAL.</item>
+      <item>        create object zmo_sh type cl_toolbar_input_field</item>
+      <item>          exporting</item>
+      <item>            i_type_id = /1wda/c5standard=&gt;mc_aid_toolbar_input_field</item>
+      <item>            i_parent  = me.</item>
+      <item>        zmo_sh-&gt;m_view_element = zcl_wd_dd_sh=&gt;enh_set_content_tb( m_view_element ).</item>
+      <item>      ENDIF.</item>
+      <item/>
+      <item>      zmo_sh-&gt;m_context_element = m_context_element.</item>
+      <item>      zmo_sh-&gt;m_context_node_path_name = m_context_node_path_name.</item>
+      <item>      zmo_sh-&gt;if_nw7_view_element_adapter~set_content( ).</item>
+      <item>    ENDIF.</item>
+     </SOURCE>
+    </ENH_HOOK_IMPL>
+    <ENH_HOOK_IMPL>
+     <PROGRAMNAME>/1WDA/C5STANDARD==============CP</PROGRAMNAME>
+     <ENHMODE>D</ENHMODE>
+     <FULL_NAME>\PR:/1WDA/C5STANDARD==============CP\TY:CL_TOOLBAR_DROPDOWN_BY_KEY\IN:IFUR_NW7__CONTROL\ME:CALL_VISITOR\SE:BEGIN\EI</FULL_NAME>
+     <SOURCE>
+      <item>*</item>
+      <item>    IF zmo_sh IS BOUND AND</item>
+      <item>       ifur_nw7_toolbarcombobox~enabled EQ abap_true AND</item>
+      <item>       ifur_nw7_toolbarcombobox~readonly EQ abap_false AND</item>
+      <item>       mv_displayonly EQ abap_false AND</item>
+      <item>       ( ifur_nw7_toolbarcombobox~visibility = ifur_nw7=&gt;visibility_visible or ifur_nw7_toolbarcombobox~visibility = ifur_nw7=&gt;visibility_on_demand ).</item>
+      <item/>
+      <item>      zcl_wd_dd_sh=&gt;enh_call_visitor_tb(</item>
+      <item>        EXPORTING</item>
+      <item>          visitor   = visitor</item>
+      <item>          parameter = parameter</item>
+      <item>          io_me     = me</item>
+      <item>          io_sh     = cast #( zmo_sh )</item>
+      <item>      ).</item>
+      <item>      RETURN.</item>
+      <item>    ENDIF.</item>
+     </SOURCE>
+    </ENH_HOOK_IMPL>
+    <ENH_HOOK_IMPL>
+     <PROGRAMNAME>/1WDA/C5STANDARD==============CP</PROGRAMNAME>
+     <ENHMODE>D</ENHMODE>
+     <FULL_NAME>\PR:/1WDA/C5STANDARD==============CP\TY:CL_TOOLBAR_DROPDOWN_BY_KEY\ME:FINALIZE\SE:BEGIN\EI</FULL_NAME>
+     <SOURCE>
+      <item>*</item>
+      <item>    IF zmo_sh IS BOUND.</item>
+      <item>      zcl_wd_dd_sh=&gt;enh_finalize_tb(</item>
+      <item>        CHANGING</item>
+      <item>          co_sh = zmo_sh</item>
+      <item>      ).</item>
+      <item>    ENDIF.</item>
+     </SOURCE>
+    </ENH_HOOK_IMPL>
+    <ENH_HOOK_IMPL>
+     <PROGRAMNAME>/1WDA/C5STANDARD==============CP</PROGRAMNAME>
+     <ENHMODE>D</ENHMODE>
+     <FULL_NAME>\PR:/1WDA/C5STANDARD==============CP\TY:CL_TOOLBAR_INPUT_FIELD\IN:IF_NW7_VIEW_ELEMENT_ADAPTER\ME:HANDLE_EVENT\SE:BEGIN\EI</FULL_NAME>
+     <SOURCE>
+      <item>*</item>
+      <item>    IF m_parent IS INSTANCE OF cl_toolbar_dropdown_by_key AND</item>
+      <item>       CAST cl_toolbar_dropdown_by_key( m_parent )-&gt;zmo_sh EQ me AND</item>
+      <item>       i_event_name EQ &apos;FieldHelpPress&apos;.</item>
+      <item>      zcl_wd_dd_sh=&gt;enh_handle_event_tb(</item>
+      <item>        EXPORTING</item>
+      <item>          m_view_element   = m_parent-&gt;m_view_element</item>
+      <item>          m_context_element = m_parent-&gt;m_context_element</item>
+      <item>      ).</item>
+      <item>    ENDIF.</item>
+     </SOURCE>
+    </ENH_HOOK_IMPL>
+   </ENHANCEMENTS>
+   <SOTR>
+    <item>
+     <HEADER>
+      <CONCEPT>42010A02B0231EDBBE9CF0489A64FD40</CONCEPT>
+      <CREA_LAN>E</CREA_LAN>
+      <TRALA_TYPE>1</TRALA_TYPE>
+      <OBJID_VEC>AAI=</OBJID_VEC>
+     </HEADER>
+     <ENTRIES>
+      <SOTR_TEXT>
+       <CONCEPT>42010A02B0231EDBBE9CF0489A64FD40</CONCEPT>
+       <LANGU>E</LANGU>
+       <LFD_NUM>0001</LFD_NUM>
+       <FLAG_CNTXT>X</FLAG_CNTXT>
+       <STATUS>R</STATUS>
+       <LENGTH>255</LENGTH>
+       <TEXT>WD DropDown with SearchHelp</TEXT>
+      </SOTR_TEXT>
+     </ENTRIES>
+    </item>
+   </SOTR>
+   <SOTR_USE>
+    <SOTR_USE>
+     <PGMID>R3TR</PGMID>
+     <OBJECT>ENHO</OBJECT>
+     <OBJ_NAME>ZE_WD_DD_SH_C5</OBJ_NAME>
+     <CONCEPT>42010A02B0231EDBBE9CF0489A64FD40</CONCEPT>
+     <LFD_NUM>0001</LFD_NUM>
+    </SOTR_USE>
+   </SOTR_USE>
+  </asx:values>
+ </asx:abap>
+</abapGit>

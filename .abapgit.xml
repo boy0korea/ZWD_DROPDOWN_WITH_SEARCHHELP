@@ -5,6 +5,10 @@
    <MASTER_LANGUAGE>E</MASTER_LANGUAGE>
    <STARTING_FOLDER>/src/</STARTING_FOLDER>
    <FOLDER_LOGIC>PREFIX</FOLDER_LOGIC>
+   <IGNORE>
+    <item>*.sicf.xml</item>
+    <item>*.sush.xml</item>
+   </IGNORE>
   </DATA>
  </asx:values>
 </asx:abap>

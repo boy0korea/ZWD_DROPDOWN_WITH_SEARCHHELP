@@ -174,15 +174,18 @@ CLASS ZCL_WD_DD_SH IMPLEMENTATION.
 
 
   METHOD enh_handle_event.
-    DATA: lo_ddk TYPE REF TO cl_wd_dropdown_by_key.
+    DATA: lo_ddk       TYPE REF TO cl_wd_dropdown_by_key,
+          lv_on_select TYPE string.
     lo_ddk ?= m_view_element.
+    lv_on_select = lo_ddk->get_on_select( ).
+    CHECK: lv_on_select IS NOT INITIAL.
 
 
     DATA l_server_event TYPE REF TO cl_wdr_server_event.    "#EC NEEDED
     CREATE OBJECT l_server_event
       EXPORTING
         source           = lo_ddk
-        command          = lo_ddk->get_on_select( )
+        command          = lv_on_select
         type             = if_wd_event=>co_action_event
         view_name        = lo_ddk->_component->id && `.` && lo_ddk->view->name "#EC NOTEXT
         ui_element_id    = lo_ddk->id
@@ -203,15 +206,18 @@ CLASS ZCL_WD_DD_SH IMPLEMENTATION.
 
 
   METHOD enh_handle_event_tb.
-    DATA: lo_ddk TYPE REF TO cl_wd_toolbar_dropdown_by_key.
+    DATA: lo_ddk       TYPE REF TO cl_wd_toolbar_dropdown_by_key,
+          lv_on_select TYPE string.
     lo_ddk ?= m_view_element.
+    lv_on_select = lo_ddk->get_on_select( ).
+    CHECK: lv_on_select IS NOT INITIAL.
 
 
     DATA l_server_event TYPE REF TO cl_wdr_server_event.    "#EC NEEDED
     CREATE OBJECT l_server_event
       EXPORTING
         source           = lo_ddk
-        command          = lo_ddk->get_on_select( )
+        command          = lv_on_select
         type             = if_wd_event=>co_action_event
         view_name        = lo_ddk->_component->id && `.` && lo_ddk->view->name "#EC NOTEXT
         ui_element_id    = lo_ddk->id

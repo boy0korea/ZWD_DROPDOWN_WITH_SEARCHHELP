@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_ENHO" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <TOOL>WDYENH</TOOL>
+   <COMPONENT_DATA>
+    <COMPONENT_NAME>WDR_F4_ELEMENTARY</COMPONENT_NAME>
+    <CONTROLLER_DATA>
+     <ENHWDYC>
+      <CONTROLLER_NAME>V_VALUE_LIST</CONTROLLER_NAME>
+      <CTLR_COMPO_ENHANCEMENTS>
+       <WDY_ENH_NEW_CODE>
+        <COMPONENT_NAME>WDR_F4_ELEMENTARY</COMPONENT_NAME>
+        <CONTROLLER_NAME>V_VALUE_LIST</CONTROLLER_NAME>
+        <CTLR_COMPO_NAME>WDDOMODIFYVIEW</CTLR_COMPO_NAME>
+        <NEW_CTLR_COMPO_NAME>_PST_3WO8ZJLG00VM4867AYVQQDEM8</NEW_CTLR_COMPO_NAME>
+        <NEW_CTLR_COMPO_TYPE>02</NEW_CTLR_COMPO_TYPE>
+        <CODE_BODY>METHOD _pst_3wo8zjlg00vm4867ayvqqdem8 . &quot;Exit of WDDOMODIFYVIEW (in ZE_WD_DD_SH_WDR_F4_ELEMENTARY )
+  IF wd_comp_controller-&gt;listener-&gt;is_window_open( ) EQ abap_true.
+    zcl_wd_c_table_find=&gt;create( view ).
+  ENDIF.
+ENDMETHOD.
+</CODE_BODY>
+       </WDY_ENH_NEW_CODE>
+      </CTLR_COMPO_ENHANCEMENTS>
+     </ENHWDYC>
+    </CONTROLLER_DATA>
+   </COMPONENT_DATA>
+   <SOTR>
+    <item>
+     <HEADER>
+      <CONCEPT>42010A02B0231EDBBFE57F5A176ADD40</CONCEPT>
+      <CREA_LAN>E</CREA_LAN>
+      <TRALA_TYPE>1</TRALA_TYPE>
+      <OBJID_VEC>AAI=</OBJID_VEC>
+     </HEADER>
+     <ENTRIES>
+      <SOTR_TEXT>
+       <CONCEPT>42010A02B0231EDBBFE57F5A176ADD40</CONCEPT>
+       <LANGU>E</LANGU>
+       <LFD_NUM>0001</LFD_NUM>
+       <FLAG_CNTXT>X</FLAG_CNTXT>
+       <STATUS>R</STATUS>
+       <LENGTH>255</LENGTH>
+       <TEXT>WD DropDown with SearchHelp</TEXT>
+      </SOTR_TEXT>
+     </ENTRIES>
+    </item>
+   </SOTR>
+   <SOTR_USE>
+    <SOTR_USE>
+     <PGMID>R3TR</PGMID>
+     <OBJECT>ENHO</OBJECT>
+     <OBJ_NAME>ZE_WD_DD_SH_WDR_F4_ELEMENTARY</OBJ_NAME>
+     <CONCEPT>42010A02B0231EDBBFE57F5A176ADD40</CONCEPT>
+     <LFD_NUM>0001</LFD_NUM>
+    </SOTR_USE>
+   </SOTR_USE>
+  </asx:values>
+ </asx:abap>
+</abapGit>

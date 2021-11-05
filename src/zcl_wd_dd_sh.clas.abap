@@ -44,6 +44,8 @@ CLASS zcl_wd_dd_sh DEFINITION
         !m_view_element    TYPE REF TO cl_wdr_view_element
         !m_context_element TYPE REF TO if_wd_context_element .
   PROTECTED SECTION.
+
+    CLASS-METHODS readme .
   PRIVATE SECTION.
 ENDCLASS.
 
@@ -278,5 +280,10 @@ CLASS ZCL_WD_DD_SH IMPLEMENTATION.
         control                     = ro_input_field
     ).
 
+  ENDMETHOD.
+
+
+  METHOD readme.
+* https://github.com/boy0korea/ZWD_DROPDOWN_WITH_SEARCHHELP
   ENDMETHOD.
 ENDCLASS.

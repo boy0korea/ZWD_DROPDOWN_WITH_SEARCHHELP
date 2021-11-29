@@ -17,11 +17,10 @@
         <NEW_CTLR_COMPO_TYPE>02</NEW_CTLR_COMPO_TYPE>
         <CODE_BODY>METHOD _pst_3wo8zjlg00vm4867ayvqqdem8 . &quot;Exit of WDDOMODIFYVIEW (in ZE_WD_DD_SH_WDR_F4_ELEMENTARY )
   IF wd_comp_controller-&gt;listener-&gt;is_window_open( ) EQ abap_true.
-    zcl_wd_c_table_find=&gt;create( view ).
     TRY.
         CALL METHODE (&apos;ZCL_WD_C_TABLE_PLUS&apos;)=&gt;(&apos;UPGRADE_C_TABLE&apos;)( view ).
       CATCH cx_root.
-    ENDTRY.     
+    ENDTRY.
   ENDIF.
 ENDMETHOD.
 </CODE_BODY>

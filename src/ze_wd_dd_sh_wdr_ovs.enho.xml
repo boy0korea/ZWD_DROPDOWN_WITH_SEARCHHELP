@@ -17,7 +17,10 @@
         <NEW_CTLR_COMPO_TYPE>02</NEW_CTLR_COMPO_TYPE>
         <CODE_BODY>METHOD _pst_3wo8zjlg00vm47yjnruuww5s0 . &quot;Exit of WDDOMODIFYVIEW (in ZE_WD_DD_SH_WDR_OVS )
   IF first_time EQ abap_true.
-    zcl_wd_c_table_find=&gt;create( view ).
+    TRY.
+        CALL METHODE (&apos;ZCL_WD_C_TABLE_PLUS&apos;)=&gt;(&apos;UPGRADE_C_TABLE&apos;)( view ).
+      CATCH cx_root.
+    ENDTRY.
   ENDIF.
 ENDMETHOD.
 </CODE_BODY>
@@ -35,7 +38,10 @@ ENDMETHOD.
         <NEW_CTLR_COMPO_TYPE>02</NEW_CTLR_COMPO_TYPE>
         <CODE_BODY>method _PST_3WO8ZJLG00VM47YK2V8IRCSAO . &quot;Exit of WDDOMODIFYVIEW (in ZE_WD_DD_SH_WDR_OVS )
   IF first_time EQ abap_true.
-    zcl_wd_c_table_find=&gt;create( view ).
+    TRY.
+        CALL METHODE (&apos;ZCL_WD_C_TABLE_PLUS&apos;)=&gt;(&apos;UPGRADE_C_TABLE&apos;)( view ).
+      CATCH cx_root.
+    ENDTRY.
   ENDIF.
 endmethod.
 </CODE_BODY>

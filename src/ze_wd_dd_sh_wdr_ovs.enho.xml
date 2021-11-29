@@ -18,7 +18,7 @@
         <CODE_BODY>METHOD _pst_3wo8zjlg00vm47yjnruuww5s0 . &quot;Exit of WDDOMODIFYVIEW (in ZE_WD_DD_SH_WDR_OVS )
   IF first_time EQ abap_true.
     TRY.
-        CALL METHOD ('ZCL_WD_C_TABLE_PLUS')=>('UPGRADE_C_TABLE') EXPORTING io_view_api = view.
+        CALL METHOD (&apos;ZCL_WD_C_TABLE_PLUS&apos;)=&gt;(&apos;UPGRADE_C_TABLE&apos;) EXPORTING io_view_api = view.
       CATCH cx_root.
     ENDTRY.
   ENDIF.
@@ -39,7 +39,7 @@ ENDMETHOD.
         <CODE_BODY>method _PST_3WO8ZJLG00VM47YK2V8IRCSAO . &quot;Exit of WDDOMODIFYVIEW (in ZE_WD_DD_SH_WDR_OVS )
   IF first_time EQ abap_true.
     TRY.
-        CALL METHOD ('ZCL_WD_C_TABLE_PLUS')=>('UPGRADE_C_TABLE') EXPORTING io_view_api = view.
+        CALL METHOD (&apos;ZCL_WD_C_TABLE_PLUS&apos;)=&gt;(&apos;UPGRADE_C_TABLE&apos;) EXPORTING io_view_api = view.
       CATCH cx_root.
     ENDTRY.
   ENDIF.

@@ -1,7 +1,7 @@
 # ZWD_DROPDOWN_WITH_SEARCHHELP
 Web Dynpro ABAP DropDownList with SearchHelp
 
-You can use both of DropDownList and SearchHelp.
+You can use both of DropDownList and SearchHelp for 1 input field.
 
 ## Original
 ![image](https://user-images.githubusercontent.com/75079431/128828973-52eb2182-82da-4ddf-b731-7e6443eb12b5.png)

@@ -1,48 +1,48 @@
-CLASS zcl_wd_dd_sh DEFINITION
-  PUBLIC
-  CREATE PUBLIC .
+class ZCL_WD_DD_SH definition
+  public
+  create public .
 
-  PUBLIC SECTION.
+public section.
 
-    CLASS-DATA gv_on TYPE flag .
+  class-data GV_ON type FLAG .
 
-    CLASS-METHODS class_constructor .
-    CLASS-METHODS enh_set_content
-      IMPORTING
-        !io_view_element      TYPE REF TO cl_wdr_view_element
-      RETURNING
-        VALUE(ro_input_field) TYPE REF TO cl_wd_input_field .
-    CLASS-METHODS enh_call_visitor
-      IMPORTING
-        !visitor   TYPE REF TO ifur_nw7_visitor
-        !parameter TYPE REF TO data
-        !io_me     TYPE REF TO cl_nw7_view_element_adapter
-        !io_sh     TYPE REF TO cl_nw7_view_element_adapter .
-    CLASS-METHODS enh_finalize
-      CHANGING
-        !co_sh TYPE REF TO /1wda/dtable_cell_editor .
-    CLASS-METHODS enh_handle_event
-      IMPORTING
-        !m_view_element    TYPE REF TO cl_wdr_view_element
-        !m_context_element TYPE REF TO if_wd_context_element .
-    CLASS-METHODS enh_set_content_tb
-      IMPORTING
-        !io_view_element      TYPE REF TO cl_wdr_view_element
-      RETURNING
-        VALUE(ro_input_field) TYPE REF TO cl_wd_toolbar_input_field .
-    CLASS-METHODS enh_call_visitor_tb
-      IMPORTING
-        !visitor   TYPE REF TO ifur_nw7_visitor
-        !parameter TYPE REF TO data
-        !io_me     TYPE REF TO ifur_nw7_toolbarcombobox
-        !io_sh     TYPE REF TO ifur_nw7_toolbarinputfield .
-    CLASS-METHODS enh_finalize_tb
-      CHANGING
-        !co_sh TYPE REF TO /1wda/dtable_cell_editor .
-    CLASS-METHODS enh_handle_event_tb
-      IMPORTING
-        !m_view_element    TYPE REF TO cl_wdr_view_element
-        !m_context_element TYPE REF TO if_wd_context_element .
+  class-methods CLASS_CONSTRUCTOR .
+  class-methods ENH_SET_CONTENT
+    importing
+      !IO_VIEW_ELEMENT type ref to CL_WDR_VIEW_ELEMENT
+    returning
+      value(RO_INPUT_FIELD) type ref to CL_WD_INPUT_FIELD .
+  class-methods ENH_CALL_VISITOR
+    importing
+      !VISITOR type ref to IFUR_NW7_VISITOR
+      !PARAMETER type ref to DATA
+      !IO_ME type ref to CL_NW7_VIEW_ELEMENT_ADAPTER
+      !IO_SH type ref to OBJECT .
+  class-methods ENH_FINALIZE
+    changing
+      !CO_SH type ref to /1WDA/DTABLE_CELL_EDITOR .
+  class-methods ENH_HANDLE_EVENT
+    importing
+      !M_VIEW_ELEMENT type ref to CL_WDR_VIEW_ELEMENT
+      !M_CONTEXT_ELEMENT type ref to IF_WD_CONTEXT_ELEMENT .
+  class-methods ENH_SET_CONTENT_TB
+    importing
+      !IO_VIEW_ELEMENT type ref to CL_WDR_VIEW_ELEMENT
+    returning
+      value(RO_INPUT_FIELD) type ref to CL_WD_TOOLBAR_INPUT_FIELD .
+  class-methods ENH_CALL_VISITOR_TB
+    importing
+      !VISITOR type ref to IFUR_NW7_VISITOR
+      !PARAMETER type ref to DATA
+      !IO_ME type ref to IFUR_NW7_TOOLBARCOMBOBOX
+      !IO_SH type ref to OBJECT .
+  class-methods ENH_FINALIZE_TB
+    changing
+      !CO_SH type ref to /1WDA/DTABLE_CELL_EDITOR .
+  class-methods ENH_HANDLE_EVENT_TB
+    importing
+      !M_VIEW_ELEMENT type ref to CL_WDR_VIEW_ELEMENT
+      !M_CONTEXT_ELEMENT type ref to IF_WD_CONTEXT_ELEMENT .
   PROTECTED SECTION.
 
     CLASS-METHODS readme .
@@ -94,9 +94,9 @@ CLASS ZCL_WD_DD_SH IMPLEMENTATION.
         parameter = lr_html_dd
     ).
 *    IFUR_NW7_GRIDLAYOUTCELL~WIDTH
-    IF ( io_me->m_parent IS INSTANCE OF ifur_nw7_gridlayoutcell AND CAST ifur_nw7_gridlayoutcell( io_me->m_parent )->width IS NOT INITIAL ) OR
-       ( io_me->m_parent IS INSTANCE OF ifur_nw7_matrixlayoutcell AND CAST ifur_nw7_matrixlayoutcell( io_me->m_parent )->width IS NOT INITIAL ) OR
-       ( io_me->m_parent IS INSTANCE OF ifur_nw7_rasterlayoutitem AND CAST ifur_nw7_rasterlayoutitem( io_me->m_parent )->width IS NOT INITIAL ).
+    IF ( io_me->ifur_nw7__control~parent->_iid EQ ifur_nw7_gridlayoutcell=>_iid_gridlayoutcell AND CAST ifur_nw7_gridlayoutcell( io_me->m_parent )->width IS NOT INITIAL ) OR
+       ( io_me->ifur_nw7__control~parent->_iid EQ ifur_nw7_matrixlayoutcell=>_iid_matrixlayoutcell AND CAST ifur_nw7_matrixlayoutcell( io_me->m_parent )->width IS NOT INITIAL ) OR
+       ( io_me->ifur_nw7__control~parent->_iid EQ ifur_nw7_rasterlayoutitem=>_iid_rasterlayoutitem AND CAST ifur_nw7_rasterlayoutitem( io_me->m_parent )->width IS NOT INITIAL ).
       lv_width = `width="100%"`.
     ENDIF.
 
@@ -134,7 +134,7 @@ CLASS ZCL_WD_DD_SH IMPLEMENTATION.
     ASSIGN lr_html_dd->* TO <lv_html_dd>.
     visitor->toolbarcombobox(
       EXPORTING
-        control   = io_me
+        control   = CAST #( io_me )
         parameter = lr_html_dd
     ).
     REPLACE `><` IN <lv_html_dd> WITH ` style="padding-right: 0px;" ><`.
@@ -143,7 +143,7 @@ CLASS ZCL_WD_DD_SH IMPLEMENTATION.
     ASSIGN lr_html_sh->* TO <lv_html_sh>.
     visitor->toolbarinputfield(
       EXPORTING
-        control   = io_sh
+        control   = CAST #( io_sh )
         parameter = lr_html_sh
     ).
     REPLACE `type="text"` IN <lv_html_sh> WITH `type="hidden"`.

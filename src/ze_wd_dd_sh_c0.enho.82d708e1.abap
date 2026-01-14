@@ -12,7 +12,7 @@ ENHANCEMENT 0 ZE_WD_DD_SH_C0.
           visitor   = visitor
           parameter = parameter
           io_me     = me
-          io_sh     = cast #( zmo_sh )
+          io_sh     = zmo_sh
       ).
       RETURN.
     ENDIF.
